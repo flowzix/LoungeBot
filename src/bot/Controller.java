@@ -1,4 +1,4 @@
-package sample;
+package bot;
 
 public class Controller {
 
