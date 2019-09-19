@@ -11,7 +11,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         drawScene(primaryStage);
-
     }
 
     private void drawScene(Stage primaryStage) throws Exception {

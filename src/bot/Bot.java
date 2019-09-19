@@ -4,9 +4,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
 
-import java.net.UnknownHostException;
-
-
 public class Bot {
     @Getter
     private BooleanProperty loginProperty = new SimpleBooleanProperty(false);

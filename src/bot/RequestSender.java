@@ -10,7 +10,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 
-
 public class RequestSender {
     private static HttpClient sharedClient;
 
@@ -21,7 +20,6 @@ public class RequestSender {
                         .build())
                 .build();
     }
-
 
     public static boolean postJSON(String url, String json) throws Exception {
         StringEntity requestEntity = new StringEntity(
