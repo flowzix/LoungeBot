@@ -1,13 +1,10 @@
 package bot;
 
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -21,21 +18,28 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     @FXML
     private VBox loginStatusBox;
-    private BooleanProperty loginProperty = new SimpleBooleanProperty(false);
+
+    @FXML
+    private TextField inputLogin;
+
+    @FXML
+    private TextField inputPassword;
+
+
+    private Bot bot = new Bot();
 
     public Controller() {
         super();
     }
 
     public void onLoginClicked(MouseEvent mouseEvent) {
-        loginProperty.set(true);
-
+        bot.loginUser(inputLogin.getText(),inputPassword.getText());
     }
 
-    private void createBindings(){
-        loginStatusBox.backgroundProperty().bind(Bindings.when(loginProperty)
-        .then(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)))
-        .otherwise(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY))));
+    private void createBindings() {
+        loginStatusBox.backgroundProperty().bind(Bindings.when(bot.getLoginProperty())
+                .then(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)))
+                .otherwise(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY))));
     }
 
     @Override
