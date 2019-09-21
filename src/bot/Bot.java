@@ -16,6 +16,7 @@ public class Bot {
         try {
             boolean result = RequestSender.postJSON(BotConfig.LOGIN_POST_URL,
                     LoungeJSONBuilder.getLoginJSON(email, password));
+            System.out.println("Response: " + result);
             loginProperty.set(result);
         } catch (Exception e) {
             // TODO: Status - CONNECTION/URI ERRORS
