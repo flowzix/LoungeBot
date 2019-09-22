@@ -1,9 +1,7 @@
 package bot;
 
-import bot.json.generated.JSON;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.util.Pair;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.CookieSpecs;
@@ -13,6 +11,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+
+import java.util.List;
 
 
 public class RequestSender {
@@ -40,29 +40,21 @@ public class RequestSender {
         System.out.println("Login response: " + responseRead);
 
 
-        getJSON("https://www.zalando-lounge.pl/api/campaigns/ZZO0TKL/articles?filter=%7B%7D&sort=attractivity_male&gender=MALE&page=1");
+        //getJSON("https://www.zalando-lounge.pl/api/campaigns/ZZO0TKL/articles?filter=%7B%7D&sort=attractivity_male&gender=MALE&page=1");
 
         return rawResponse.getStatusLine().getStatusCode() == 200;
 
     }
 
-    public static boolean getJSON(String url) throws Exception {
+    public static HttpResponse get(String url, List<Pair<String, String>> headers) throws Exception {
         HttpGet request = new HttpGet(url);
-        request.addHeader("Accept", "application/json, text/plain, */*");
-        request.addHeader("Accept-Encoding", "gzip, deflate, br");
-        request.addHeader("Host", "www.zalando-lounge.pl");
-        request.addHeader("Accept-Language", "pl,en-US;q=0.7,en;q=0.3");
-        request.addHeader("Referer", "https://www.zalando-lounge.pl/campaigns/ZZO0TKL/all");
-        request.addHeader("X-Requested-With", "XMLHttpRequest");    // TODO MOVE TO SPECIALISED METHOD WRAPPER
+        if (headers != null) {
+            headers.stream().forEach(header -> request.addHeader(header.getKey(), header.getValue()));
+        }
+        //request.addHeader("Referer", "https://www.zalando-lounge.pl/campaigns/ZZO0TKL/all");
         HttpResponse response = sharedClient.execute(request);
         //String responseRead = IOUtils.toString(response.getEntity().getContent(), "utf8");
         //System.out.println(responseRead);
-
-
-        ObjectMapper om = new ObjectMapper();
-        JSON respPojo = om.readValue(response.getEntity().getContent(), JSON.class);
-        System.out.println(respPojo);
-
-        return true;
+        return response;
     }
 }

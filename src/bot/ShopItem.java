@@ -1,17 +1,37 @@
 package bot;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
-@Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ShopItem {
-    List<String> keywords;
-    String size;
-    boolean chooseAnyIfNotAvailable;
-    Double maxPrice;
+    @Setter
+    private List<String> keywords;
+    @Setter
+    private String size;
+    @Setter
+    private boolean chooseAnyIfNotAvailable;
+    @Setter
+    private Double maxPrice;
+
+    public String getKeywordsForDisplay() {
+        return keywords.stream().map(keyword -> keyword + ";").collect(Collectors.joining());
+    }
+
+    public String getSizeForDisplay() {
+        return size;
+    }
+
+    public String getAnySizeForDisplay() {
+        return Boolean.toString(chooseAnyIfNotAvailable);
+    }
+
+    public String getMaxPriceForDisplay() {
+        return maxPrice.toString();
+    }
 }

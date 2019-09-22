@@ -1,5 +1,6 @@
 package bot;
 
+import bot.json.generated.JSON;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
@@ -13,17 +14,10 @@ public class Bot {
     }
 
     public void loginUser(String email, String password) {
-        try {
-            boolean result = RequestSender.postJSON(BotConfig.LOGIN_POST_URL,
-                    LoungeJSONBuilder.getLoginJSON(email, password));
-            System.out.println("Response: " + result);
-            loginProperty.set(result);
-        } catch (Exception e) {
-            // TODO: Status - CONNECTION/URI ERRORS
-            loginProperty.set(false);
-            e.printStackTrace();
-        }
-        // TODO: MAKE A WRAPPER FOR THIS FUNCTION, SEEMS LIKE LOGIC MIXING
+        loginProperty.set(BotRequests.sendLoginRequest(email, password));
+    }
+    public void getItemsFromCampaign(String url){
+        JSON unparsedItems = BotRequests.getItemPageRequest(url);
     }
 
 }

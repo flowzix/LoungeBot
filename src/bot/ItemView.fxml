@@ -15,7 +15,7 @@
     <Label text="Rozmiar" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="1" />
     <Label text="Dowolny rozmiar" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="2" />
     <Label text="Maks. cena" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="3" />
-    <Button fx:id="buttonAddItem" mnemonicParsing="false" text="Dodaj" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.margin="$x1" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+    <Button fx:id="buttonAddItem" mnemonicParsing="false" onMouseClicked="#addItemClicked" text="Dodaj" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.margin="$x1" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
     <TextField fx:id="inputKeywords" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="0" />
     <TextField fx:id="inputSize" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="1" />
     <TextField fx:id="inputMaxPrice" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="3" />
