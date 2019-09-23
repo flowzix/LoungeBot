@@ -1,5 +1,7 @@
-package bot;
+package bot.controller;
 
+import bot.logic.Bot;
+import bot.data.ShopItem;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,4 +1,4 @@
-package bot;
+package bot.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

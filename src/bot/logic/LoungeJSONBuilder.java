@@ -1,4 +1,4 @@
-package bot;
+package bot.logic;
 import org.json.JSONObject;
 public class LoungeJSONBuilder {
     public static String getLoginJSON(String email, String password){

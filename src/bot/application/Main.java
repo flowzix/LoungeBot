@@ -1,10 +1,9 @@
-package bot;
+package bot.application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,7 +17,7 @@ public class Main extends Application {
     }
 
     private void drawScene(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/MainView.fxml"));
         primaryStage.setTitle("Lounge bot");
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);

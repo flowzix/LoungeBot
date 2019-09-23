@@ -1,5 +1,6 @@
-package bot;
+package bot.logic;
 
+import bot.constant.BotConfig;
 import bot.json.generated.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.util.Pair;

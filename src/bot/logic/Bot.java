@@ -1,4 +1,4 @@
-package bot;
+package bot.logic;
 
 import bot.json.generated.JSON;
 import javafx.beans.property.BooleanProperty;

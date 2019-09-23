@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane prefHeight="310.0" prefWidth="460.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="bot.ItemController">
+<GridPane prefHeight="310.0" prefWidth="460.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="bot.controller.ItemController">
   <children>
     <Label text="Słowa kluczowe" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <GridPane.margin>

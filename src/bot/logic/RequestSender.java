@@ -1,4 +1,4 @@
-package bot;
+package bot.logic;
 
 import javafx.util.Pair;
 import org.apache.commons.io.IOUtils;
