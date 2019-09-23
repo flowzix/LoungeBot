@@ -1,7 +1,6 @@
 package bot.logic;
 
 import javafx.util.Pair;
-import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.CookieSpecs;
@@ -33,15 +32,7 @@ public class RequestSender {
 
         HttpPost postMethod = new HttpPost(url);
         postMethod.setEntity(requestEntity);
-
         HttpResponse rawResponse = sharedClient.execute(postMethod);
-
-        String responseRead = IOUtils.toString(rawResponse.getEntity().getContent(), "utf8");
-        System.out.println("Login response: " + responseRead);
-
-
-        //getJSON("https://www.zalando-lounge.pl/api/campaigns/ZZO0TKL/articles?filter=%7B%7D&sort=attractivity_male&gender=MALE&page=1");
-
         return rawResponse.getStatusLine().getStatusCode() == 200;
 
     }
@@ -51,10 +42,7 @@ public class RequestSender {
         if (headers != null) {
             headers.stream().forEach(header -> request.addHeader(header.getKey(), header.getValue()));
         }
-        //request.addHeader("Referer", "https://www.zalando-lounge.pl/campaigns/ZZO0TKL/all");
         HttpResponse response = sharedClient.execute(request);
-        //String responseRead = IOUtils.toString(response.getEntity().getContent(), "utf8");
-        //System.out.println(responseRead);
         return response;
     }
 }

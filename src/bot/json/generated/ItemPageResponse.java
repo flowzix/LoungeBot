@@ -12,7 +12,7 @@ import java.util.Map;
         "results",
         "pagination"
 })
-public class JSON {
+public class ItemPageResponse {
 
     @JsonProperty("results")
     private List<Result> results = null;

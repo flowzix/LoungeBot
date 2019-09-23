@@ -1,7 +1,7 @@
 package bot.logic;
 
 import bot.constant.BotConfig;
-import bot.json.generated.JSON;
+import bot.json.generated.ItemPageResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.util.Pair;
 import org.apache.http.HttpResponse;
@@ -20,11 +20,11 @@ public class BotRequests {
         }
     }
 
-    public static JSON getItemPageRequest(String url) {
+    public static ItemPageResponse getItemsFromPage(String campaignID, int pageNo) {
         try {
-            HttpResponse response = RequestSender.get(url, getItemPageHeaders());
+            HttpResponse response = RequestSender.get(URLGenerator.getCampaignItemsPage(campaignID, pageNo), getItemPageHeaders());
             ObjectMapper om = new ObjectMapper();
-            return om.readValue(response.getEntity().getContent(), JSON.class);
+            return om.readValue(response.getEntity().getContent(), ItemPageResponse.class);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

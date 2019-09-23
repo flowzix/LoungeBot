@@ -9,15 +9,13 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShopItem {
-    @Setter
+@Setter
+public class UserDefinedItem {
     private List<String> keywords;
-    @Setter
     private String size;
-    @Setter
     private boolean chooseAnyIfNotAvailable;
-    @Setter
     private Double maxPrice;
+    private String campaignID;
 
     public String getKeywordsForDisplay() {
         return keywords.stream().map(keyword -> keyword + ";").collect(Collectors.joining());
@@ -28,10 +26,14 @@ public class ShopItem {
     }
 
     public String getAnySizeForDisplay() {
-        return Boolean.toString(chooseAnyIfNotAvailable);
+        return chooseAnyIfNotAvailable ? "Tak" : "Nie";
     }
 
     public String getMaxPriceForDisplay() {
         return maxPrice.toString();
+    }
+
+    public String getCampaignIDForDisplay() {
+        return campaignID;
     }
 }

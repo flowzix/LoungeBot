@@ -18,19 +18,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Example {
 
     @JsonProperty("JSON")
-    private JSON jSON;
+    private ItemPageResponse jSON;
     @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
     private ZawartoOdpowiedzi zawartoOdpowiedzi;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("JSON")
-    public JSON getJSON() {
+    public ItemPageResponse getJSON() {
         return jSON;
     }
 
     @JsonProperty("JSON")
-    public void setJSON(JSON jSON) {
+    public void setJSON(ItemPageResponse jSON) {
         this.jSON = jSON;
     }
 

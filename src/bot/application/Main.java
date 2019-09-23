@@ -17,7 +17,7 @@ public class Main extends Application {
     }
 
     private void drawScene(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/MainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/MainView.fxml"));
         primaryStage.setTitle("Lounge bot");
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
