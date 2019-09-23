@@ -1,5 +1,5 @@
 
-package bot.json.generated;
+package bot.json.generated.itempage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "45"
+    "EDITOR_CONFIG"
 })
-public class UrlPath {
+public class ZawartoOdpowiedzi {
 
-    @JsonProperty("45")
-    private String _45;
+    @JsonProperty("EDITOR_CONFIG")
+    private EditorConfig eDITORCONFIG;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("45")
-    public String get45() {
-        return _45;
+    @JsonProperty("EDITOR_CONFIG")
+    public EditorConfig getEDITORCONFIG() {
+        return eDITORCONFIG;
     }
 
-    @JsonProperty("45")
-    public void set45(String _45) {
-        this._45 = _45;
+    @JsonProperty("EDITOR_CONFIG")
+    public void setEDITORCONFIG(EditorConfig eDITORCONFIG) {
+        this.eDITORCONFIG = eDITORCONFIG;
     }
 
     @JsonAnyGetter

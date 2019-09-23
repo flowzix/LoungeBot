@@ -1,5 +1,5 @@
 
-package bot.json.generated;
+package bot.json.generated.itempage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "is_wearable"
+    "totalArticles",
+    "totalPages"
 })
-public class Attributes {
+public class Pagination {
 
-    @JsonProperty("is_wearable")
-    private Boolean isWearable;
+    @JsonProperty("totalArticles")
+    private Integer totalArticles;
+    @JsonProperty("totalPages")
+    private Integer totalPages;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("is_wearable")
-    public Boolean getIsWearable() {
-        return isWearable;
+    @JsonProperty("totalArticles")
+    public Integer getTotalArticles() {
+        return totalArticles;
     }
 
-    @JsonProperty("is_wearable")
-    public void setIsWearable(Boolean isWearable) {
-        this.isWearable = isWearable;
+    @JsonProperty("totalArticles")
+    public void setTotalArticles(Integer totalArticles) {
+        this.totalArticles = totalArticles;
+    }
+
+    @JsonProperty("totalPages")
+    public Integer getTotalPages() {
+        return totalPages;
+    }
+
+    @JsonProperty("totalPages")
+    public void setTotalPages(Integer totalPages) {
+        this.totalPages = totalPages;
     }
 
     @JsonAnyGetter

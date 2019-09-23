@@ -2,7 +2,7 @@ package bot.logic;
 
 import bot.data.ShopDefinedItem;
 import bot.data.UserDefinedItem;
-import bot.json.generated.ItemPageResponse;
+import bot.json.generated.itempage.ItemPageResponse;
 import bot.logging.Logger;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;

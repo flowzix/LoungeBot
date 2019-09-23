@@ -1,5 +1,5 @@
 
-package bot.json.generated;
+package bot.json.generated.itempage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "eu"
+    "45"
 })
-public class CountrySizes {
+public class UrlPath {
 
-    @JsonProperty("eu")
-    private String eu;
+    @JsonProperty("45")
+    private String _45;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("eu")
-    public String getEu() {
-        return eu;
+    @JsonProperty("45")
+    public String get45() {
+        return _45;
     }
 
-    @JsonProperty("eu")
-    public void setEu(String eu) {
-        this.eu = eu;
+    @JsonProperty("45")
+    public void set45(String _45) {
+        this._45 = _45;
     }
 
     @JsonAnyGetter

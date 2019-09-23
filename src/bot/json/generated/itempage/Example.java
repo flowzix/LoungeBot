@@ -1,5 +1,5 @@
 
-package bot.json.generated;
+package bot.json.generated.itempage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "EDITOR_CONFIG"
+    "JSON",
+    "Zawarto\u015b\u0107 odpowiedzi"
 })
-public class ZawartoOdpowiedzi {
+public class Example {
 
-    @JsonProperty("EDITOR_CONFIG")
-    private EditorConfig eDITORCONFIG;
+    @JsonProperty("JSON")
+    private ItemPageResponse jSON;
+    @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
+    private ZawartoOdpowiedzi zawartoOdpowiedzi;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("EDITOR_CONFIG")
-    public EditorConfig getEDITORCONFIG() {
-        return eDITORCONFIG;
+    @JsonProperty("JSON")
+    public ItemPageResponse getJSON() {
+        return jSON;
     }
 
-    @JsonProperty("EDITOR_CONFIG")
-    public void setEDITORCONFIG(EditorConfig eDITORCONFIG) {
-        this.eDITORCONFIG = eDITORCONFIG;
+    @JsonProperty("JSON")
+    public void setJSON(ItemPageResponse jSON) {
+        this.jSON = jSON;
+    }
+
+    @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
+    public ZawartoOdpowiedzi getZawartoOdpowiedzi() {
+        return zawartoOdpowiedzi;
+    }
+
+    @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
+    public void setZawartoOdpowiedzi(ZawartoOdpowiedzi zawartoOdpowiedzi) {
+        this.zawartoOdpowiedzi = zawartoOdpowiedzi;
     }
 
     @JsonAnyGetter

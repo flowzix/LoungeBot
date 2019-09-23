@@ -1,7 +1,7 @@
 package bot.logic;
 
 import bot.constant.BotConfig;
-import bot.json.generated.ItemPageResponse;
+import bot.json.generated.itempage.ItemPageResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.util.Pair;
 import org.apache.http.HttpResponse;

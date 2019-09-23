@@ -2,7 +2,7 @@ package bot.logic;
 
 import bot.data.ShopDefinedItem;
 import bot.data.ShopDefinedItemVariant;
-import bot.json.generated.ItemPageResponse;
+import bot.json.generated.itempage.ItemPageResponse;
 
 import java.util.ArrayList;
 import java.util.List;

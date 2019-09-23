@@ -1,5 +1,5 @@
 
-package bot.json.generated;
+package bot.json.generated.itempage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,36 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "totalArticles",
-    "totalPages"
+    "eu"
 })
-public class Pagination {
+public class CountrySizes {
 
-    @JsonProperty("totalArticles")
-    private Integer totalArticles;
-    @JsonProperty("totalPages")
-    private Integer totalPages;
+    @JsonProperty("eu")
+    private String eu;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("totalArticles")
-    public Integer getTotalArticles() {
-        return totalArticles;
+    @JsonProperty("eu")
+    public String getEu() {
+        return eu;
     }
 
-    @JsonProperty("totalArticles")
-    public void setTotalArticles(Integer totalArticles) {
-        this.totalArticles = totalArticles;
-    }
-
-    @JsonProperty("totalPages")
-    public Integer getTotalPages() {
-        return totalPages;
-    }
-
-    @JsonProperty("totalPages")
-    public void setTotalPages(Integer totalPages) {
-        this.totalPages = totalPages;
+    @JsonProperty("eu")
+    public void setEu(String eu) {
+        this.eu = eu;
     }
 
     @JsonAnyGetter

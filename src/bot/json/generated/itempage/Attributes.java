@@ -1,5 +1,5 @@
 
-package bot.json.generated;
+package bot.json.generated.itempage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,36 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "JSON",
-    "Zawarto\u015b\u0107 odpowiedzi"
+    "is_wearable"
 })
-public class Example {
+public class Attributes {
 
-    @JsonProperty("JSON")
-    private ItemPageResponse jSON;
-    @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
-    private ZawartoOdpowiedzi zawartoOdpowiedzi;
+    @JsonProperty("is_wearable")
+    private Boolean isWearable;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("JSON")
-    public ItemPageResponse getJSON() {
-        return jSON;
+    @JsonProperty("is_wearable")
+    public Boolean getIsWearable() {
+        return isWearable;
     }
 
-    @JsonProperty("JSON")
-    public void setJSON(ItemPageResponse jSON) {
-        this.jSON = jSON;
-    }
-
-    @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
-    public ZawartoOdpowiedzi getZawartoOdpowiedzi() {
-        return zawartoOdpowiedzi;
-    }
-
-    @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
-    public void setZawartoOdpowiedzi(ZawartoOdpowiedzi zawartoOdpowiedzi) {
-        this.zawartoOdpowiedzi = zawartoOdpowiedzi;
+    @JsonProperty("is_wearable")
+    public void setIsWearable(Boolean isWearable) {
+        this.isWearable = isWearable;
     }
 
     @JsonAnyGetter

@@ -1,5 +1,5 @@
 
-package bot.json.generated;
+package bot.json.generated.itempage;
 
 import com.fasterxml.jackson.annotation.*;
 
