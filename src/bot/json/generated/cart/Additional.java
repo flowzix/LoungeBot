@@ -1,5 +1,5 @@
 
-package bot.json.generated.itempage;
+package bot.json.generated.cart;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,36 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "JSON",
-    "Zawarto\u015b\u0107 odpowiedzi"
+    "reco"
 })
-public class Example {
+public class Additional {
 
-    @JsonProperty("JSON")
-    private ItemPageResponse jSON;
-    @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
-    private ZawartoOdpowiedzi zawartoOdpowiedzi;
+    @JsonProperty("reco")
+    private Integer reco;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("JSON")
-    public ItemPageResponse getJSON() {
-        return jSON;
+    @JsonProperty("reco")
+    public Integer getReco() {
+        return reco;
     }
 
-    @JsonProperty("JSON")
-    public void setJSON(ItemPageResponse jSON) {
-        this.jSON = jSON;
-    }
-
-    @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
-    public ZawartoOdpowiedzi getZawartoOdpowiedzi() {
-        return zawartoOdpowiedzi;
-    }
-
-    @JsonProperty("Zawarto\u015b\u0107 odpowiedzi")
-    public void setZawartoOdpowiedzi(ZawartoOdpowiedzi zawartoOdpowiedzi) {
-        this.zawartoOdpowiedzi = zawartoOdpowiedzi;
+    @JsonProperty("reco")
+    public void setReco(Integer reco) {
+        this.reco = reco;
     }
 
     @JsonAnyGetter

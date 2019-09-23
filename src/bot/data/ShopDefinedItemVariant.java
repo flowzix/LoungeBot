@@ -10,4 +10,8 @@ import lombok.Setter;
 public class ShopDefinedItemVariant {
     private String sku;
     private Double price;
+    private String size;
+    private String campaignID;
+    private String configSKU;
+    private String displayName;
 }

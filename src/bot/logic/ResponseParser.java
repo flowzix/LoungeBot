@@ -18,16 +18,17 @@ public class ResponseParser {
                                     .map(s -> ShopDefinedItemVariant.builder()
                                             .price(s.getSpecialPrice() / 100.0)
                                             .sku(s.getSku())
+                                            .campaignID(result.getCampaignIdentifier())
+                                            .configSKU(result.getSku())
+                                            .size(s.getCountrySizes().getEu())
+                                            .displayName(result.getBrand() + " " + result.getNameCategoryTag() + " " + result.getNameColor())
                                             .build())
                                     .collect(Collectors.toList());
 
                             parsedItems.add(ShopDefinedItem.builder()
                                     .brand(result.getBrand())
-                                    .campaignID(result.getCampaignIdentifier())
                                     .name(result.getNameCategoryTag())
                                     .color(result.getNameColor())
-                                    .itemSKU(result.getSku())
-                                    .url(result.getUrlPath().toString())
                                     .variantsAvailable(variants)
                                     .build());
                         }));
