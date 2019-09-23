@@ -11,8 +11,11 @@
   <children>
     <Label minWidth="-Infinity" prefHeight="-1.0" prefWidth="-1.0" text="Login" GridPane.columnIndex="0" GridPane.rowIndex="0" />
     <Label text="Hasło" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <TextField fx:id="inputLogin" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-    <TextField fx:id="inputPassword" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <TextField fx:id="inputLogin" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+      <GridPane.margin>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+      </GridPane.margin>
+    </TextField>
     <Button fx:id="loginButton" mnemonicParsing="false" onMouseClicked="#onLoginClicked" prefWidth="97.0" text="Zaloguj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
     <VBox id="VBox" fx:id="loginStatusBox" alignment="CENTER" spacing="5.0" style="" GridPane.columnIndex="0" GridPane.rowIndex="2">
       <children>
@@ -47,6 +50,7 @@
         <Button fx:id="removeItemButton" mnemonicParsing="false" onMouseClicked="#onRemoveItemClicked" prefWidth="83.0" text="Usuń" textAlignment="LEFT" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
       </children>
     </AnchorPane>
+    <PasswordField fx:id="inputPassword" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="1" />
   </children>
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="88.0" />
