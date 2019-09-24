@@ -48,6 +48,7 @@
       <children>
         <Button fx:id="addItemButton" alignment="CENTER" contentDisplay="TOP" minWidth="-1.0" mnemonicParsing="false" onMouseClicked="#onAddItemClicked" prefWidth="83.0" text="Dodaj" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" />
         <Button fx:id="removeItemButton" mnemonicParsing="false" onMouseClicked="#onRemoveItemClicked" prefWidth="83.0" text="Usuń" textAlignment="LEFT" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+        <Button fx:id="editItemButton" layoutX="0.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#onEditItemClicked" prefWidth="83.0" text="Edytuj" />
       </children>
     </AnchorPane>
     <PasswordField fx:id="inputPassword" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="1" />

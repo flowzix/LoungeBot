@@ -84,26 +84,47 @@ public class Controller implements Initializable {
         }
     }
 
-    public void itemAddedAction(UserDefinedItem userDefinedItem) {
-        userItems.add(userDefinedItem);
+    public void itemAddedAction(UserDefinedItem userDefinedItem, ItemController itemController) {
+        if (!itemController.isEditMode()) {
+            userItems.add(userDefinedItem);
+        }
+    }
+
+    public void itemEditedAction(UserDefinedItem oldItem, UserDefinedItem newItem) {
+        userItems.remove(oldItem);
+        userItems.add(newItem);
     }
 
     public void onAddItemClicked(MouseEvent mouseEvent) throws Exception {
+        showItemWindow().setParentController(this);
+
+    }
+
+    public void onStartBotClicked(MouseEvent mouseEvent) {
+        bot.startBot(userItems);
+    }
+
+    public void onEditItemClicked(MouseEvent mouseEvent) throws Exception {
+        if (itemsTable.getSelectionModel().getSelectedItem() != null) {
+            ItemController itemController = showItemWindow();
+            itemController.setParentController(this);
+            itemController.setEditMode(true);
+            itemController.setEditedItem(itemsTable.getSelectionModel().getSelectedItem());
+        }
+    }
+
+    private ItemController showItemWindow() throws Exception {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
                         "../fxml/ItemView.fxml"
                 )
         );
         Stage stage = new Stage();
-        stage.setTitle("Dodaj przedmiot");
+        stage.setTitle("Edycja przedmiotu");
         stage.setScene(new Scene(loader.load(), 450, 450));
         ItemController newWindowController = loader.getController();
-        newWindowController.setParentController(this);
         stage.show();
-    }
-
-    public void onStartBotClicked(MouseEvent mouseEvent) {
-        bot.startBot(userItems);
+        return newWindowController;
     }
 
     public void onRemoveItemClicked(MouseEvent mouseEvent) {

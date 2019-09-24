@@ -68,6 +68,9 @@ public class Bot {
     public Optional<List<ItemPageResponse>> getItemsFromCampaign(String campaignID) {
         List<ItemPageResponse> itemPageResponses = new ArrayList<>();
         ItemPageResponse unparsedItems = BotRequests.getItemsFromPage(campaignID, 0);
+        if(unparsedItems == null){
+            return Optional.empty();
+        }
         itemPageResponses.add(unparsedItems);
         for (int i = 1; i < unparsedItems.getPagination().getTotalPages(); i++) {
             itemPageResponses.add(BotRequests.getItemsFromPage(campaignID, i));
