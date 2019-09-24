@@ -16,25 +16,33 @@
         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
       </GridPane.margin>
     </TextField>
+    <PasswordField fx:id="inputPassword" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <GridPane.margin>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+      </GridPane.margin>
+    </PasswordField>
     <Button fx:id="loginButton" mnemonicParsing="false" onMouseClicked="#onLoginClicked" prefWidth="97.0" text="Zaloguj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+    <Button fx:id="startButton" mnemonicParsing="false" onMouseClicked="#onStartBotClicked" text="Start" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <GridPane.margin>
+        <Insets />
+      </GridPane.margin>
+    </Button>
+    <Button fx:id="stopButton" mnemonicParsing="false" onMouseClicked="#onBotStopClicked" text="Stop" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
+      <children>
+        <Button fx:id="addItemButton" alignment="CENTER" contentDisplay="TOP" minWidth="-1.0" mnemonicParsing="false" onMouseClicked="#onAddItemClicked" prefWidth="83.0" text="Dodaj" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" />
+        <Button fx:id="removeItemButton" mnemonicParsing="false" onMouseClicked="#onRemoveItemClicked" prefWidth="83.0" text="Usuń" textAlignment="LEFT" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
+        <Button fx:id="editItemButton" layoutX="0.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#onEditItemClicked" prefWidth="83.0" text="Edytuj" />
+      </children>
+    </AnchorPane>
     <VBox id="VBox" fx:id="loginStatusBox" alignment="CENTER" spacing="5.0" style="" GridPane.columnIndex="0" GridPane.rowIndex="2">
       <children>
         <Label id="loggedInLabel" fx:id="loginStatusLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="66.0" style="-fx-background-color: rgba(255, 255, 255, 0.5);" text="STATUS" textAlignment="CENTER" />
       </children>
     </VBox>
     <Label text="Rzeczy" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-    <TextArea fx:id="logArea" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5">
-      <GridPane.margin>
-        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
-      </GridPane.margin>
-    </TextArea>
+    <TextArea fx:id="logArea" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.margin="$x1" GridPane.rowIndex="5" />
     <Label text="Postępy" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-    <Button fx:id="startButton" mnemonicParsing="false" onMouseClicked="#onStartBotClicked" text="Start" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-      <GridPane.margin>
-        <Insets />
-      </GridPane.margin>
-    </Button>
-    <Button fx:id="stopButton" mnemonicParsing="false" text="Stop" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
     <TableView fx:id="itemsTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.margin="$x1" GridPane.rowIndex="3" GridPane.rowSpan="2">
       <columns>
         <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="301.0" text="Słowa kluczowe" fx:id="columnKeywords" />
@@ -44,14 +52,6 @@
         <TableColumn id="" maxWidth="5000.0" minWidth="10.0" prefWidth="171.0" text="Kampania" fx:id="columnCampaignID" />
       </columns>
     </TableView>
-    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
-      <children>
-        <Button fx:id="addItemButton" alignment="CENTER" contentDisplay="TOP" minWidth="-1.0" mnemonicParsing="false" onMouseClicked="#onAddItemClicked" prefWidth="83.0" text="Dodaj" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0" />
-        <Button fx:id="removeItemButton" mnemonicParsing="false" onMouseClicked="#onRemoveItemClicked" prefWidth="83.0" text="Usuń" textAlignment="LEFT" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="35.0" />
-        <Button fx:id="editItemButton" layoutX="0.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#onEditItemClicked" prefWidth="83.0" text="Edytuj" />
-      </children>
-    </AnchorPane>
-    <PasswordField fx:id="inputPassword" prefWidth="200.0" GridPane.columnIndex="1" GridPane.margin="$x1" GridPane.rowIndex="1" />
   </children>
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="88.0" />
@@ -65,9 +65,9 @@
   <rowConstraints>
     <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="305.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="343.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="360.0" minHeight="10.0" prefHeight="271.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="189.0" minHeight="10.0" prefHeight="144.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="265.0" minHeight="0.0" prefHeight="34.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="343.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="360.0" minHeight="10.0" prefHeight="205.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="214.0" minHeight="10.0" prefHeight="208.0" vgrow="SOMETIMES" />
   </rowConstraints>
 </GridPane>

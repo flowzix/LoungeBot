@@ -3,7 +3,6 @@ package bot.data;
 import lombok.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Builder
@@ -18,7 +17,13 @@ public class UserDefinedItem {
     private String campaignID;
 
     public String getKeywordsForDisplay() {
-        return keywords.stream().map(keyword -> keyword + ";").collect(Collectors.joining());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < keywords.size() - 1; i++) {
+            stringBuilder.append(keywords.get(i));
+        }
+        stringBuilder.append(keywords.get(keywords.size() - 1));
+        return stringBuilder.toString();
+        //TODO: use stringUtils from apache to join it
     }
 
     public String getSizeForDisplay() {

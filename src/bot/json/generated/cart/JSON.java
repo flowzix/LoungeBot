@@ -4,6 +4,7 @@ package bot.json.generated.cart;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,11 +16,11 @@ import lombok.Builder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "additional",
-    "campaignIdentifier",
-    "configSku",
-    "ignoreExceptionCodes",
-    "simpleSku"
+        "additional",
+        "campaignIdentifier",
+        "configSku",
+        "ignoreExceptionCodes",
+        "simpleSku"
 })
 @AllArgsConstructor
 @Builder

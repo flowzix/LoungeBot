@@ -3,6 +3,7 @@ package bot.controller;
 import bot.data.UserDefinedItem;
 import bot.logging.Logger;
 import bot.logic.Bot;
+import com.thoughtworks.xstream.XStream;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +25,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -59,9 +64,9 @@ public class Controller implements Initializable {
     private TextArea logArea;
 
     private Bot bot = new Bot();
-    private Logger logger;
-    private ObservableList<UserDefinedItem> userItems = FXCollections.observableArrayList();
+    private ObservableList<UserDefinedItem> userItems;
 
+    private Thread botThread = null;
 
     public Controller() {
         super();
@@ -76,13 +81,18 @@ public class Controller implements Initializable {
     }
 
     public void onLoginClicked(MouseEvent mouseEvent) {
+        new Thread(() -> loginUser()).start();
+    }
+
+    private void loginUser() {
         bot.loginUser(inputLogin.getText(), inputPassword.getText());
         if (bot.isUserLogged()) {
-            logger.log("Zalogowano pomyślnie");
+            Logger.log("Zalogowano pomyślnie");
         } else {
-            logger.log("Logowanie nie powiodło się.");
+            Logger.log("Logowanie nie powiodło się.");
         }
     }
+
 
     public void itemAddedAction(UserDefinedItem userDefinedItem, ItemController itemController) {
         if (!itemController.isEditMode()) {
@@ -95,14 +105,28 @@ public class Controller implements Initializable {
         userItems.add(newItem);
     }
 
+    public void onBotStopClicked(MouseEvent mouseEvent) throws Exception {
+        botThread.interrupt();
+    }
+
     public void onAddItemClicked(MouseEvent mouseEvent) throws Exception {
         showItemWindow().setParentController(this);
-
     }
 
     public void onStartBotClicked(MouseEvent mouseEvent) {
-        bot.startBot(userItems);
+        if(botThread != null && botThread.isAlive()){
+            Logger.log("Bot już działa.");
+            return;
+        }
+        if (bot.isUserLogged()) {
+            List<UserDefinedItem> copiedItems = new ArrayList(userItems);
+            botThread = new Thread(() -> bot.startBot(copiedItems));
+            botThread.start();
+        } else {
+            Logger.log("Musisz być zalogowany.");
+        }
     }
+
 
     public void onEditItemClicked(MouseEvent mouseEvent) throws Exception {
         if (itemsTable.getSelectionModel().getSelectedItem() != null) {
@@ -114,11 +138,7 @@ public class Controller implements Initializable {
     }
 
     private ItemController showItemWindow() throws Exception {
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(
-                        "../fxml/ItemView.fxml"
-                )
-        );
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/ItemView.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Edycja przedmiotu");
         stage.setScene(new Scene(loader.load(), 450, 450));
@@ -146,6 +166,11 @@ public class Controller implements Initializable {
         columnAnySize.setCellValueFactory(new PropertyValueFactory<>("anySizeForDisplay"));
         columnMaxPrice.setCellValueFactory(new PropertyValueFactory<>("maxPriceForDisplay"));
         columnCampaignID.setCellValueFactory(new PropertyValueFactory<>("campaignIDForDisplay"));
+        if (new File("items.xml").exists()) {
+            loadItemsFromXML();
+        } else {
+            userItems = FXCollections.observableArrayList();
+        }
         itemsTable.itemsProperty().setValue(userItems);
     }
 
@@ -155,5 +180,20 @@ public class Controller implements Initializable {
         columnAnySize.prefWidthProperty().bind(itemsTable.widthProperty().divide((1.0 / (1.0 / 8))));
         columnMaxPrice.prefWidthProperty().bind(itemsTable.widthProperty().divide(1.0 / (1.0 / 8)));
         columnCampaignID.prefWidthProperty().bind(itemsTable.widthProperty().divide(1.0 / (2.0 / 8)));
+    }
+
+    public void saveUserItemsToXML() {
+        XStream xs = new XStream();
+        try (FileWriter fw = new FileWriter("items.xml")) {
+            fw.write(xs.toXML(new ArrayList<>(userItems)));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void loadItemsFromXML() {
+        XStream xs = new XStream();
+        List<UserDefinedItem> loadedUserItems = (List<UserDefinedItem>) xs.fromXML(new File("items.xml"));
+        userItems = FXCollections.observableArrayList(loadedUserItems);
     }
 }

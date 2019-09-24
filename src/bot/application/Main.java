@@ -1,8 +1,8 @@
 package bot.application;
 
+import bot.controller.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,15 +13,17 @@ public class Main extends Application {
         primaryStage.setWidth(900);
         primaryStage.setHeight(700);
         primaryStage.setResizable(false);
-        drawScene(primaryStage);
+        Controller mainController = drawScene(primaryStage);
+        primaryStage.setOnHiding(e -> mainController.saveUserItemsToXML());
     }
 
-    private void drawScene(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/MainView.fxml"));
+    private Controller drawScene(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/MainView.fxml"));
         primaryStage.setTitle("Lounge bot");
-        Scene scene = new Scene(root, 800, 600);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(new Scene(loader.load(), 800, 600));
+        Controller newWindowController = loader.getController();
         primaryStage.show();
+        return newWindowController;
     }
 
     public static void main(String[] args) {

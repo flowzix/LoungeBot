@@ -58,6 +58,7 @@ public class ItemController implements Initializable {
         }
         Stage stage = (Stage) buttonAddItem.getScene().getWindow();
         stage.close();
+        setEditMode(false);
     }
 
     public void setEditedItem(UserDefinedItem item) {

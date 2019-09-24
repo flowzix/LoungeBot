@@ -5,6 +5,7 @@ import bot.json.generated.cart.Additional;
 import bot.json.generated.cart.Cart;
 import bot.json.generated.cart.JSON;
 import bot.json.generated.itempage.ItemPageResponse;
+import bot.logging.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.util.Pair;
 import org.apache.http.HttpResponse;
@@ -36,6 +37,7 @@ public class BotRequests {
     }
 
     public static void addItemToCart(ShopDefinedItemVariant item) {
+        Logger.log("Dodawanie do koszyka " + item.getDisplayName() + " rozmiar " + item.getSize());
         try {
             Additional additional = new Additional();
             additional.setReco(0);
