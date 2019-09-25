@@ -18,7 +18,7 @@ public class Main extends Application {
     }
 
     private Controller drawScene(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainView.fxml"));
         primaryStage.setTitle("Lounge bot");
         primaryStage.setScene(new Scene(loader.load(), 800, 600));
         Controller newWindowController = loader.getController();

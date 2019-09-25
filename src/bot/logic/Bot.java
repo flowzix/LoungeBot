@@ -101,7 +101,7 @@ public class Bot {
         return matchingItemVariants;
     }
 
-    public List<ItemPageResponse> getItemsFromCampaign(String campaignID) {
+    private List<ItemPageResponse> getItemsFromCampaign(String campaignID) {
         List<ItemPageResponse> itemPageResponses = new ArrayList<>();
         ItemPageResponse unparsedItems = BotRequests.getItemsFromPage(campaignID, 0);
         if (unparsedItems == null) {

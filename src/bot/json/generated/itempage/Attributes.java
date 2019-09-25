@@ -20,7 +20,7 @@ public class Attributes {
     @JsonProperty("is_wearable")
     private Boolean isWearable;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("is_wearable")
     public Boolean getIsWearable() {

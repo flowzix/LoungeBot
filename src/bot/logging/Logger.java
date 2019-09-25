@@ -3,6 +3,7 @@ package bot.logging;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

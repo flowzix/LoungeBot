@@ -2,7 +2,6 @@ package bot.logic;
 
 import bot.data.ShopDefinedItemVariant;
 import bot.json.generated.cart.Additional;
-import bot.json.generated.cart.Cart;
 import bot.json.generated.cart.JSON;
 import bot.json.generated.itempage.ItemPageResponse;
 import bot.logging.Logger;

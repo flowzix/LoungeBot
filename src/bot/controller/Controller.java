@@ -81,7 +81,7 @@ public class Controller implements Initializable {
     }
 
     public void onLoginClicked(MouseEvent mouseEvent) {
-        new Thread(() -> loginUser()).start();
+        new Thread(this::loginUser).start();
     }
 
     private void loginUser() {
@@ -138,7 +138,7 @@ public class Controller implements Initializable {
     }
 
     private ItemController showItemWindow() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/ItemView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ItemView.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Edycja przedmiotu");
         stage.setScene(new Scene(loader.load(), 450, 450));
@@ -191,7 +191,7 @@ public class Controller implements Initializable {
         }
     }
 
-    public void loadItemsFromXML() {
+    private void loadItemsFromXML() {
         XStream xs = new XStream();
         List<UserDefinedItem> loadedUserItems = (List<UserDefinedItem>) xs.fromXML(new File("items.xml"));
         userItems = FXCollections.observableArrayList(loadedUserItems);

@@ -20,7 +20,7 @@ public class Additional {
     @JsonProperty("reco")
     private Integer reco;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("reco")
     public Integer getReco() {
