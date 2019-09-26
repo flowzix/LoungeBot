@@ -38,7 +38,12 @@ public class Bot {
             }
             List<ShopDefinedItem> parsedItems = getParsedItems(responseItems, userItem);
             List<ShopDefinedItemVariant> matchingItems = getMatchingItems(parsedItems, userItem);
-            matchingItems.forEach(BotRequests::addItemToCart);
+            matchingItems.forEach(item -> {
+                if (Thread.currentThread().isInterrupted()) {
+                    return;
+                }
+                BotRequests.addItemToCart(item);
+            });
         });
     }
 
@@ -56,8 +61,8 @@ public class Bot {
 
     private List<ItemPageResponse> getCampaignItemsWhenCampaignAvailable(UserDefinedItem userDefinedItem) {
         Logger.log("Pobieranie rzeczy z kampanii " + userDefinedItem.getCampaignIDForDisplay());
-        List<ItemPageResponse> items = getItemsFromCampaign(userDefinedItem.getCampaignID());
         while (true) {
+            List<ItemPageResponse> items = getItemsFromCampaign(userDefinedItem.getCampaignID());
             if (items.isEmpty()) {
                 return new ArrayList<>();
             } else {

@@ -20,6 +20,7 @@ public class UserDefinedItem {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < keywords.size() - 1; i++) {
             stringBuilder.append(keywords.get(i));
+            stringBuilder.append(";");
         }
         stringBuilder.append(keywords.get(keywords.size() - 1));
         return stringBuilder.toString();

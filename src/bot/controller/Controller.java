@@ -106,7 +106,9 @@ public class Controller implements Initializable {
     }
 
     public void onBotStopClicked(MouseEvent mouseEvent) throws Exception {
-        botThread.interrupt();
+        if(botThread != null && botThread.isAlive()){
+            botThread.interrupt();
+        }
     }
 
     public void onAddItemClicked(MouseEvent mouseEvent) throws Exception {
