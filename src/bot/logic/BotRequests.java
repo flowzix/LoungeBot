@@ -26,7 +26,7 @@ public class BotRequests {
 
     public static ItemPageResponse getItemsFromPage(String campaignID, int pageNo) {
         try {
-            HttpResponse response = RequestSender.get(URLProvider.getCampaignItemsPage(campaignID, pageNo), getItemPageHeaders());
+            HttpResponse response = RequestSender.get(URLProvider.getCampaignItemsPageUrl(campaignID, pageNo), getItemPageHeaders());
             ObjectMapper om = new ObjectMapper();
             return om.readValue(response.getEntity().getContent(), ItemPageResponse.class);
         } catch (Exception ex) {

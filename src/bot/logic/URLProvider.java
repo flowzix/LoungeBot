@@ -10,7 +10,7 @@ public class URLProvider {
         return LOGIN_POST_URL;
     }
 
-    public static String getCampaignItemsPage(String campaignID, int pageNo) {
+    public static String getCampaignItemsPageUrl(String campaignID, int pageNo) {
         return new StringBuilder()
                 .append(CAMPAIGN_API_BASE)
                 .append(campaignID)

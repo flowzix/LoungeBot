@@ -2,9 +2,6 @@ package bot.logic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.util.Pair;
-import org.apache.http.HttpException;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
@@ -21,12 +18,9 @@ import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
 import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
-import org.apache.http.nio.ContentEncoder;
-import org.apache.http.nio.IOControl;
 import org.apache.http.nio.reactor.ConnectingIOReactor;
-import org.apache.http.protocol.HttpContext;
+import org.apache.http.util.EntityUtils;
 
-import java.io.IOException;
 import java.util.List;
 
 public class RequestSender {
@@ -62,25 +56,20 @@ public class RequestSender {
     }
 
     public static boolean postJSON(String url, String json) throws Exception {
-        StringEntity requestEntity = new StringEntity(
-                json,
-                ContentType.APPLICATION_JSON);
+        StringEntity requestEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
 
         HttpPost postMethod = new HttpPost(url);
         postMethod.setEntity(requestEntity);
         HttpResponse rawResponse = sharedClient.execute(postMethod);
+        System.out.println(EntityUtils.toString(rawResponse.getEntity()));
         postMethod.releaseConnection();
         return rawResponse.getStatusLine().getStatusCode() == 200;
     }
 
     public static boolean putJSON(String url, Object jsonObject, List<Pair<String, String>> headers) throws Exception {
-
-
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(jsonObject);
-        StringEntity requestEntity = new StringEntity(
-                json,
-                ContentType.APPLICATION_JSON);
+        StringEntity requestEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
         HttpPut putRequest = new HttpPut(url);
         putRequest.setEntity(requestEntity);
         putRequest.addHeader("Content-type", "application/json");
@@ -90,9 +79,6 @@ public class RequestSender {
         }
 
         asyncSharedClient.execute(putRequest, null);
-
-        //HttpResponse resp = sharedClient.execute(putRequest);
-        //putRequest.releaseConnection();
         return true;
     }
 
@@ -105,47 +91,4 @@ public class RequestSender {
         HttpResponse response = sharedClient.execute(request);
         return response;
     }
-
-    static class PutRequestProducer implements org.apache.http.nio.protocol.HttpAsyncRequestProducer {
-        @Override
-        public HttpHost getTarget() {
-            return null;
-        }
-
-        @Override
-        public HttpRequest generateRequest() throws IOException, HttpException {
-            return null;
-        }
-
-        @Override
-        public void produceContent(ContentEncoder contentEncoder, IOControl ioControl) throws IOException {
-
-        }
-
-        @Override
-        public void requestCompleted(HttpContext httpContext) {
-
-        }
-
-        @Override
-        public void failed(Exception e) {
-
-        }
-
-        @Override
-        public boolean isRepeatable() {
-            return false;
-        }
-
-        @Override
-        public void resetRequest() throws IOException {
-
-        }
-
-        @Override
-        public void close() throws IOException {
-
-        }
-    }
-
 }
